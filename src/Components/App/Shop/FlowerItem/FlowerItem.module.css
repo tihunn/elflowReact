@@ -1,0 +1,10 @@
+.nameFlower {
+    font-size: 3vh;
+    line-height: 3vh;
+}
+
+.img {
+    height: 140px;
+    width: 140px;
+    border-radius: 3px;
+}
