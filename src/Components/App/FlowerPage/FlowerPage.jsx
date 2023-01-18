@@ -13,7 +13,7 @@ const FlowerPage = (props) => {
 
     return (
         <Container>
-            <Image className={css.width} src={ process.env.REACT_APP_API_URL + props.flower.img }/>
+            <Image className={css.width} src={ process.env.REACT_APP_API_URL + "/" + props.flower.img }/>
             {isAdmin ? <Form.Control type="file" onChange={(e) => props.setFile(e.target.files[0])}/> : null}
 
 

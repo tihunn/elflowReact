@@ -12,7 +12,7 @@ const FlowerItem = (props) => {
         <Row className={"mt-2"}>
             <Card>
                 <div onClick={() => navigate(FLOWER_ROUTE + `/${props.flower.id}`)}>
-                    <img className={css.img} src={process.env.REACT_APP_API_URL + props.flower.img} alt="картинка цветка"/>
+                    <img className={css.img} src={process.env.REACT_APP_API_URL + "/" + props.flower.img} alt="картинка цветка"/>
 
                     <h2 className={css.nameFlower}>{props.flower.nameFlower}</h2>
                     <div>Высота: {props.flower.height}</div>
