@@ -1,23 +1,19 @@
-import React from 'react';
-import {Button, DropdownButton} from "react-bootstrap";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import CatalogsSelection from "./CatalogsSelection";
+import {addFlowerInCatalog, delCatalog, getCatalogs} from "../../store/catalogsReduser";
 
-const CatalogsSelection = (props) => {
-    const catalogSelectionButton = () => {
-        if (props.catalogs)
-        return props.catalogs.map(catalog =>
-            <Button
-                className="m-2"
-                onClick={() => props.addFlowerInCatalog(catalog.id, props.flower.id)}
-                key={catalog.id}
-            > {catalog.nameCatalog} </Button>
-        )
+function mapStateToProps(state) {
+    return {
+        catalogs: state.catalogs.arrCatalogs
+    };
+}
+
+
+export default connect(
+    mapStateToProps, {
+        addFlowerInCatalog,
+        getCatalogs,
+        delCatalog
     }
-
-    return (
-            <DropdownButton title={"Добавить в каталог"}>
-                {catalogSelectionButton()}
-            </DropdownButton>
-    );
-};
-
-export default CatalogsSelection;
+)(CatalogsSelection);

@@ -1,9 +1,9 @@
 import React from "react";
 import {Card, Image, Row} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
-import {FLOWER_ROUTE} from "../../AppRouter/const";
-import css from "../../../style/OrderItem.module.css"
-import ButtonNumberFlowers from "./ButtonNumber/ButtonNumberFlowers";
+import {FLOWER_ROUTE} from "../AppRouter/const";
+import css from "../../style/OrderItem.module.css"
+import ButtonNumberFlowers from "./ButtonNumberFlowers";
 
 
 const OrderItem = (props) => {

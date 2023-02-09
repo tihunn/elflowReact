@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Col, Container, Image} from "react-bootstrap";
-import OrderItemContainer from "./OrderItem/OrderItemContainer";
-import css from "./OrderItem/OrderItem.module.css";
+import OrderItemContainer from "../../Components/OrderItem/OrderItemContainer";
+import css from "../../style/OrderItem.module.css";
 
 
 

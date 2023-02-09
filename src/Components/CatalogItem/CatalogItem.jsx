@@ -1,8 +1,8 @@
 import React from "react";
 import {Card, Row} from "react-bootstrap";
 import {NavLink, useNavigate} from "react-router-dom";
-import {CATALOG_ROUTE} from "../../AppRouter/const";
-import css from "../../../style/catalog.module.css";
+import {CATALOG_ROUTE} from "../AppRouter/const";
+import css from "../../style/catalog.module.css";
 
 
 const CatalogItem = (props) => {

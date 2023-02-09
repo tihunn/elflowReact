@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {Button, Card, Container, Form} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
-import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../../../AppRouter/const";
-import {loginOrReg} from "../../../../store/userReducer";
+import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../../Components/AppRouter/const";
+import {loginOrReg} from "../../store/userReducer";
 
 
 const Auth = (props) => {

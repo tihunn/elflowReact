@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import css from "../../../style/ButtonNumber.module.css"
+import css from "../../style/basket.module.css"
 
 const ButtonNumberFlowers = (props) => {
     let [newNum, setNewNum] = useState( Number(props.number) )

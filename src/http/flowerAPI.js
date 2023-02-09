@@ -16,7 +16,6 @@ export const flowerAPI = {
     },
     async getFlowers(page = 1, limit = 12) {
         const {data} = await $host.get("/flower", {params: {page, limit}} )
-        window.data = data
         return data
     },
     async getOneFlower(id) {

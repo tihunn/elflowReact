@@ -1,8 +1,8 @@
 import React from "react"
 import {Button, Container, Nav, Navbar} from "react-bootstrap"
 import {NavLink} from "react-router-dom"
-import {ORDER_ROUTE, LOGIN_ROUTE, SHOP_ROUTE, ADMIN_ROUTE} from "../../AppRouter/const"
-import css from "../../../style/NavBar.module.css"
+import {ORDER_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE, CATALOGS_ROUTE, All_FLOWER_ROUTE} from "../AppRouter/const"
+import css from "../../style/admin.module.css"
 
 
 const NavBar = (props) => {
@@ -10,7 +10,8 @@ const NavBar = (props) => {
             <div>
                 <Navbar bg="dark" variant="dark">
                     <Container>
-                        <NavLink to={SHOP_ROUTE} className={css.elFlower}>elFlower: Сделайте заказ!</NavLink>
+                        <NavLink to={CATALOGS_ROUTE} className={css.link_logo}>elFlower: Каталоги!</NavLink>
+                        <NavLink to={All_FLOWER_ROUTE} className={css.link_logo}>Все цветы</NavLink>
 
                         {props.role === "admin" ?
                             <NavLink to={ADMIN_ROUTE} className="ml-auto" style={{color: "white"}}>

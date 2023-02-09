@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {checkUser} from "../../store/userReducer";
-import App from "./App";
 import {connect} from "react-redux";
 import {getFlowers} from "../../store/flowersReducer";
 import Preload from "../Preload/Preload";
+import AppRouter from "./AppRouter";
 
 
 const AppContainer = (props) => {
@@ -11,12 +11,11 @@ const AppContainer = (props) => {
 
     useEffect(() => {
         props.checkUser()
-        props.getFlowers()
         setLoading(false)
     }, [])
 
     if (loading) {return <Preload/>}
-    return <App/>
+    return <AppRouter isAuth={props.isAuth}/>
 }
 
 let mapStateToProps = (state) => {

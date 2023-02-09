@@ -1,12 +1,25 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import {connect} from 'react-redux';
-import Flowers from "./Flowers";
+import {getFlowers} from "../../store/flowersReducer";
+import Preload from "../../Components/Preload/Preload";
+import ListFlowersContainer from "../../Components/ListFlowers/ListFlowersContainer";
 
-function mapStateToProps(state) {
-    return {};
+
+const FlowersContainer = (props) => {
+    useEffect( () => {
+        props.getFlowers(props.activePage)
+    }, [])
+
+    return <ListFlowersContainer/>
 }
 
 
+function mapStateToProps(state) {
+    return {
+        activePage: state.flowers.activePage
+    }
+}
+
 export default connect(
-    mapStateToProps,
-)(Flowers);
+    mapStateToProps, {getFlowers}
+)(FlowersContainer);

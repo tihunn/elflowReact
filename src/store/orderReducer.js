@@ -1,6 +1,6 @@
 import {orderAPI} from "../http/orderAPI";
 import {toggleIsFetching} from "./preloaderReducer";
-import filter from "../Components/App/Shop/Filter/Filter";
+import filter from "../Components/Filter/Filter";
 
 
 const initialState = {

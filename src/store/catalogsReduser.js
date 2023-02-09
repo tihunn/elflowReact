@@ -2,27 +2,68 @@ import {toggleIsFetching} from "./preloaderReducer";
 import {catalogAPI} from "../http/catalogAPI";
 
 let initialState = {
-    catalogs: [
+    arrCatalogs: [
         {id: 0, nameCatalog: ""}
     ],
-
+    isSuccessAdd: false
 }
 
-export let adminReducer = (state = initialState, action) => {
+export let catalogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "toggleIsFetching":
+        case "setCatalogs":
             return {
                 ...state,
-                isFetching:  action.isFetching,
+                arrCatalogs:  action.catalogs,
+            }
+        case "toggleSuccessAdd":
+            return {
+                ...state,
+                isSuccessAdd:  action.isSuccessAdd,
             }
     }
     return state
 }
 
 
-export const addCategory = (nameCategory) => (dispatch) => {
+const setCatalogs = (catalogs) => ({type: "setCatalogs", catalogs: catalogs})
+export const toggleSuccessAdd = (successAdd) => ({type: "toggleSuccessAdd", isSuccessAdd: successAdd})
+
+
+export const addCatalog = (nameCategory) => (dispatch) => {
     dispatch( toggleIsFetching(true) )
-    catalogAPI.addCategory(nameCategory).then( () => {
+    catalogAPI.addCatalog(nameCategory).then( () => {
+        dispatch( toggleSuccessAdd(true) )
+        dispatch( toggleIsFetching(false) )
+    })
+}
+export const getCatalogs = () => (dispatch) => {
+    dispatch( toggleIsFetching(true) )
+    catalogAPI.getAllCatalogs().then( (data) => {
+        dispatch( setCatalogs(data) )
+        dispatch( toggleIsFetching(false) )
+    })
+}
+export const addFlowerInCatalog = (catalogId, flowerId) => (dispatch) => {
+    dispatch( toggleIsFetching(true) )
+    catalogAPI.addFlower(catalogId, flowerId).then( (data) => {
+        dispatch( toggleIsFetching(false) )
+    })
+}
+export const delCatalog = (catalogId) => (dispatch) => {
+    dispatch( toggleIsFetching(true) )
+    catalogAPI.delCatalog(catalogId).then( (data) => {
+        if (data === `Каталог с id ${catalogId} удалён`) {
+            dispatch ( getCatalogs() )
+            dispatch( toggleSuccessAdd(true) )
+        }
+        dispatch( toggleIsFetching(false) )
+    })
+}
+export const updateCatalog = (catalogId, nameCategory) => (dispatch) => {
+    dispatch( toggleIsFetching(true) )
+    catalogAPI.updateCatalog(catalogId, nameCategory).then( (data) => {
+        dispatch ( getCatalogs() )
+        dispatch( toggleSuccessAdd(true) )
         dispatch( toggleIsFetching(false) )
     })
 }

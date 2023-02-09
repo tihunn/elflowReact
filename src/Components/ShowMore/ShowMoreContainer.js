@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getFlowers} from "../../../store/flowersReducer";
+import {getFlowers} from "../../store/flowersReducer";
 import ShowMore from "./ShowMore";
 
 

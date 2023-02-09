@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {setIsSunAndShadow, setSunOrShadow, toggleHideLightSensitivity} from "../../../store/FilterReduser";
+import {setIsSunAndShadow, setSunOrShadow, toggleHideLightSensitivity} from "../../store/FilterReduser";
 import LightSensitivity from "./LightSensitivity";
 
 function mapStateToProps(state) {

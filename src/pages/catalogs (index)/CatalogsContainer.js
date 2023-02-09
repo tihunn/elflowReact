@@ -9,7 +9,6 @@ const CatalogsContainer = (props) => {
         props.getCatalogs(props.activePage)
     }, [])
 
-
     return <ListFlowersContainer/>
 }
 

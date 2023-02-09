@@ -12,7 +12,7 @@ const initialState = {
         wholesale: 100,
         available: 0,
         description: " ",
-        img: "null"
+        image: []
 }
 
 export let oneFlowerReducer = (state = initialState, action) => {

@@ -1,21 +1,51 @@
 import React from "react";
-import {Row} from "react-bootstrap";
-import FlowerItem from "../FlowerItem/FlowerItem";
-
-
+import {Button, Col, Container, Row} from "react-bootstrap";
+import FilterContainer from "../Filter/FilterContainer";
+import PaginationContainer from "../Pagination/PaginationContainer";
+import CatalogItemContainer from "../CatalogItem/CatalogItemContainer";
+import {useLocation} from "react-router-dom";
+import FlowerItemContainer from "../FlowerItem/FlowerItemContainer";
 
 
 const ListFlowers = (props) => {
-    const flowers = () => {
-        if (Object.keys(props.flowers).length > 0) {
-            return props.flowers.map(flower => <FlowerItem key={flower.id} flower={flower} addOrder={props.addOrder}/>)
+    const location = useLocation()
+
+    const catalogsOrFlowers = () => {
+        if (location.pathname === "/") {
+            if (props.catalogs) {
+                return props.catalogs.map(catalog =>
+                    <CatalogItemContainer
+                        key={catalog.id}
+                        catalog={catalog}
+                    />)
+            }
+        } else if (props.flowers && props.flowers[0].id) {
+            return props.flowers.map(flower =>
+                <FlowerItemContainer
+                    key={flower.id}
+                    flower={flower}
+                    addOrder={props.addOrder}
+                />)
+        } else {
+            return <h1 className={"mt-2 text-center"}> Каталог пуст </h1>
         }
     }
 
+
     return (
-        <Row sm={3} md={3} lg={4} xl={5} xxl={6}>
-            {flowers()}
-        </Row>
+        <Container>
+            <Row>
+                <Col md={3} xl={2}>
+                    <FilterContainer/>
+                </Col>
+                <Col md={9} xl={10}>
+                    <Row sm={3} md={3} lg={4} xl={5} xxl={6}>
+                        {catalogsOrFlowers()}
+                    </Row>
+                    {location.pathname !== "/" ? <PaginationContainer/> : null}
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

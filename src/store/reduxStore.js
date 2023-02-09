@@ -6,6 +6,7 @@ import {preloaderReducer} from "./preloaderReducer";
 import {filterReducer} from "./FilterReduser";
 import {oneFlowerReducer} from "./oneFlowerReducer";
 import {orderReducer} from "./orderReducer";
+import {catalogsReducer} from "./catalogsReduser";
 
 let reducers = combineReducers({
     preloader: preloaderReducer,
@@ -14,6 +15,7 @@ let reducers = combineReducers({
     filter: filterReducer,
     oneFlower: oneFlowerReducer,
     orders: orderReducer,
+    catalogs: catalogsReducer,
 })
 
 let store = createStore(reducers, applyMiddleware(thunk))

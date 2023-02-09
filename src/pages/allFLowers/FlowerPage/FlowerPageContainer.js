@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {SHOP_ROUTE} from "../../../Components/AppRouter/const";
+import {CATALOGS_ROUTE} from "../../../Components/AppRouter/const";
 import {connect} from "react-redux";
 import FlowerPage from "./FlowerPage";
 import {toggleIsFetching} from "../../../store/preloaderReducer";
@@ -29,7 +29,7 @@ const FlowerPageContainer = (props) => {
 
     const delFlower = () => {
         props.deleteFlower(id)
-        navigate(SHOP_ROUTE)
+        navigate(CATALOGS_ROUTE)
     }
 
 

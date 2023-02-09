@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
-import {checkUser} from "../../../store/userReducer";
-import {deleteAllOrders, getOrders, postOrders} from "../../../store/orderReducer";
+import {checkUser} from "../../store/userReducer";
+import {deleteAllOrders, getOrders, postOrders} from "../../store/orderReducer";
 import Order from "./Order";
-import Preload from "../../Common/Preload/Preload";
+import Preload from "../../Components/Preload/Preload";
 
 
 const OrderContainer = (props) => {

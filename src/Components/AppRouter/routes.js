@@ -1,14 +1,25 @@
-import Admin from "../NavBar/Admin/Admin";
-import {ADMIN_ROUTE, ORDER_ROUTE, FLOWER_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "./const";
-import FlowerPageContainer from "../FlowerPage/FlowerPageContainer";
-import AuthContainer from "../NavBar/Auth/AuthContainer";
-import Shop from "../Shop/Shop";
-import OrderContainer from "../Basket/OrderContainer";
+import {
+    ADMIN_ROUTE,
+    ORDER_ROUTE,
+    FLOWER_ROUTE,
+    LOGIN_ROUTE,
+    REGISTRATION_ROUTE,
+    All_FLOWER_ROUTE,
+    CATALOGS_ROUTE,
+    CATALOG_ROUTE
+} from "./const";
+import FlowerPageContainer from "../../pages/allFLowers/FlowerPage/FlowerPageContainer";
+import AuthContainer from "../../pages/auth/AuthContainer";
+import OrderContainer from "../../pages/order/OrderContainer";
+import AdminContainer from "../../pages/admin/AdminContainer";
+import ListFlowersContainer from "../ListFlowers/ListFlowersContainer";
+import FlowersContainer from "../../pages/allFLowers/AllFlowersContainer";
+import CatalogsContainer from "../../pages/catalogs (index)/CatalogsContainer";
 
 export const authRoute = [
     {
         path: ADMIN_ROUTE,
-        Component: Admin
+        Component: AdminContainer
     },
     {
         path: ORDER_ROUTE,
@@ -18,8 +29,12 @@ export const authRoute = [
 
 export const publicRote = [
     {
-        path: SHOP_ROUTE,
-        Component: Shop
+        path: All_FLOWER_ROUTE,
+        Component: FlowersContainer
+    },
+    {
+        path: CATALOGS_ROUTE,
+        Component: CatalogsContainer
     },
     {
         path: REGISTRATION_ROUTE,
@@ -33,4 +48,9 @@ export const publicRote = [
         path: FLOWER_ROUTE + "/:id",
         Component: FlowerPageContainer
     },
+    {
+        path: CATALOG_ROUTE + "/:nameFlower",
+        Component: ListFlowersContainer
+    },
+
 ]

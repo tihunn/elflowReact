@@ -13,11 +13,11 @@ import {
     setPrice,
     setSunOrShadow,
     setWholesale
-} from "../../../store/FilterReduser";
-import {searchFlowers} from "../../../store/flowersReducer";
+} from "../../store/FilterReduser";
+import {searchFlowers} from "../../store/flowersReducer";
 import {compose} from "redux";
-import withCreatorStrBloomTime from "../../../hoc/withCreatorStrBloomTime";
-import withCreatorStrLightSensitivity from "../../../hoc/withCreatorStrLightSensitivity";
+import withCreatorStrBloomTime from "../../hoc/withCreatorStrBloomTime";
+import withCreatorStrLightSensitivity from "../../hoc/withCreatorStrLightSensitivity";
 
 
 const FilterContainer = (props) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {logOut} from "../../../store/userReducer";
+import {logOut} from "../../store/userReducer";
 import NavBar from "./NavBar";
 
 

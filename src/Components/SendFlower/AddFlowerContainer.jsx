@@ -1,11 +1,11 @@
 import React from 'react';
-import {createFlower} from "../../../store/flowersReducer";
+import {createFlower} from "../../store/flowersReducer";
 import {connect} from "react-redux";
 import SendFlower from "./SendFlower";
-import {clearState} from "../../../store/FilterReduser";
+import {clearState} from "../../store/FilterReduser";
 import {compose} from "redux";
-import withCreatorStrLightSensitivity from "../../../hoc/withCreatorStrLightSensitivity";
-import withCreatorStrBloomTime from "../../../hoc/withCreatorStrBloomTime";
+import withCreatorStrLightSensitivity from "../../hoc/withCreatorStrLightSensitivity";
+import withCreatorStrBloomTime from "../../hoc/withCreatorStrBloomTime";
 
 let mapStateToProps = (state) => {
     return {
