@@ -11,15 +11,17 @@ const initialState = {
         price: 200,
         wholesale: 100,
         available: 0,
-        description: " ",
-        image: []
+        description: "",
+        image: [],
+        arrFiles: [],
 }
 
 export let oneFlowerReducer = (state = initialState, action) => {
     switch (action.type) {
         case "setFlower":
             return {
-                ...action.flower
+                ...action.flower,
+                arrFiles: []
             }
         case "updateNameFlower":
             return {
@@ -51,6 +53,16 @@ export let oneFlowerReducer = (state = initialState, action) => {
                 ...state,
                 description: action.description
             }
+        case "addFile":
+            return {
+                ...state,
+                arrFiles: [...state.arrFiles, action.file]
+            }
+        case "delFile":
+            return {
+                delFile: state.arrFiles.splice(action.index, 1),
+                ...state,
+            }
     }
     return state
 }
@@ -62,12 +74,16 @@ export const updatePrice = (price) => ( {type: "updatePrice", price} )
 export const updateWholesale = (wholesale) => ( {type: "updateWholesale", wholesale} )
 export const updateAvailable = (available) => ( {type: "updateAvailable", available} )
 export const updateDescription = (description) => ( {type: "updateDescription", description} )
+export const addFile = (file) => ({type: "addFile", file})
+export const delFile = (index) => ({type: "delFile", index})
 
 
 export const getFlower = (id) => (dispatch) => {
     dispatch( toggleIsFetching(true) )
     flowerAPI.getOneFlower(id).then(data => {
-        dispatch( setFlower(data.rows[0]) )
+        if (data.rows.length !== 0) {
+            dispatch( setFlower(data.rows[0]) )
+        }
         dispatch( toggleIsFetching(false) )
     })
 }
@@ -78,4 +94,23 @@ export const deleteFlower = (id) => (dispatch) => {
 }
 export const updateFlower = (formData) => (dispatch) => {
     flowerAPI.updateFlower(formData).then(() => {})
+}
+export const addImg = (formData) => (dispatch) => {
+    flowerAPI.addImg(formData).then((data) => {
+        if (data === "Запрос успешно обработан") {
+            let id = formData.get("id")
+            dispatch( getFlower(id) )
+        }
+    })
+}
+export const createFlower = (formData) => () => {
+    flowerAPI.createFlower(formData).then(data => {
+    })
+}
+export const delImg = (id, nameImg) => (dispatch) => {
+    flowerAPI.delImg(nameImg).then(data => {
+        if (data === "Запрос на удаление успешно обработан") {
+            dispatch( getFlower(id) )
+        }
+    })
 }

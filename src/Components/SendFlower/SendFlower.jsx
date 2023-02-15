@@ -11,7 +11,12 @@ const SendFlower = (props) => {
         formData.append("wholesale", `${props.state.wholesale}`)
         formData.append("available", `${props.state.available}`)
         formData.append("description", props.state.description)
-        formData.append("img", props.file)
+
+        if (props.state.arrFiles.length !== 0) {
+            props.state.arrFiles.forEach( (file, index) => {
+                formData.append(`img${index}`, file)
+            })
+        }
 
         let strBloomTime = props.creatorStrBloomTime(props.bloomTime)
         if (strBloomTime) { formData.append("bloomTime", strBloomTime) }
@@ -22,12 +27,13 @@ const SendFlower = (props) => {
 
         if (props.state.id) {formData.append("id", props.state.id)}
 
-        props.createFlower ? props.createFlower(formData) : props.updateFlower(formData)
-        props.clearState()
+        props.methodSend(formData)
     }
 
     return  (
-        <Button onClick={addFlower} variant="success" className="mt-2">Добавить растение</Button>
+        <Button onClick={addFlower} variant="success" className="m-2">
+            {props.title}
+        </Button>
     )
 }
 

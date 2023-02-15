@@ -9,18 +9,16 @@ import withCreatorStrBloomTime from "../../hoc/withCreatorStrBloomTime";
 
 let mapStateToProps = (state) => {
     return {
-        state: state.filter,
+        state: state.oneFlower,
         isHiddenLightSensitivity: state.filter.isHiddenLightSensitivity,
         sunOrShadow: state.filter.sunOrShadow,
         isSunAndShadow: state.filter.isSunAndShadow,
         bloomTime: state.filter.bloomTime,
-        file: state.filter.file
     }
 }
 
 export default compose(
     connect(mapStateToProps, {
-        createFlower,
         clearState}),
     withCreatorStrLightSensitivity,
     withCreatorStrBloomTime,

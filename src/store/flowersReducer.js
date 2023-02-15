@@ -60,10 +60,7 @@ export const LoadMoreFlowers = (page) => (dispatch) => {
         dispatch(addFlowers(data.rows))
     })
 }
-export const createFlower = (formData) => () => {
-    flowerAPI.createFlower(formData).then(data => {
-    })
-}
+
 export const searchFlowers = (paramsData, page = 1) => (dispatch) => {
     dispatch(toggleIsFetching(true))
     dispatch(setActivePage(page))

@@ -5,16 +5,22 @@ import {connect} from "react-redux";
 import FlowerPage from "./FlowerPage";
 import {toggleIsFetching} from "../../../store/preloaderReducer";
 import {
+    addFile,
+    addImg,
+    createFlower,
     deleteFlower,
+    delFile,
+    delImg,
     getFlower,
     updateAvailable,
     updateDescription,
+    updateFlower,
     updateHeight,
     updateNameFlower,
     updatePrice,
     updateWholesale,
+
 } from "../../../store/oneFlowerReducer";
-import {setFile} from "../../../store/FilterReduser";
 import {addOrder} from "../../../store/orderReducer";
 import Preload from "../../../Components/Preload/Preload";
 
@@ -45,7 +51,7 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    setFile,
+    addFile,
     deleteFlower,
     getFlower,
     toggleIsFetching,
@@ -55,5 +61,10 @@ export default connect(mapStateToProps, {
     updateWholesale,
     updateAvailable,
     updateDescription,
-    addOrder
+    addOrder,
+    delFile,
+    addImg,
+    updateFlower,
+    createFlower,
+    delImg
 })(FlowerPageContainer)

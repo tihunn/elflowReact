@@ -18,7 +18,6 @@ const initialState = {
     wholesale: 100,
     available: 0,
     description: "",
-    file: null,
     isHiddenLightSensitivity: true
 }
 
@@ -59,11 +58,6 @@ export let filterReducer = (state = initialState, action) => {
                 ...state,
                 description: action.description
             }
-        case "setFile":
-            return {
-                ...state,
-                file: action.file
-            }
         case "setSunOrShadow":
             return {
                 ...state,
@@ -101,7 +95,7 @@ export const setHeightMin = (heightMin) => ({type: "setHeightMin", heightMin})
 export const setPrice = (price) => ({type: "setPrice", price})
 export const setWholesale = (wholesale) => ({type: "setWholesale", wholesale})
 export const setAvailable = (available) => ({type: "setAvailable", available})
-export const setFile = (file) => ({type: "setFile", file})
+
 export const setDescription = (description) => ({type: "setDescription", description})
 export const setSunOrShadow = () => ({type: "setSunOrShadow"})
 export const setIsSunAndShadow = () => ({type: "setIsSunAndShadow"})

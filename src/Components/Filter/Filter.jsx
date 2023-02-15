@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Form} from "react-bootstrap";
 import VariantsBloomTime from "../VariantsBloomTime/VariantsBloomTime";
-import AddFlowerContainer from "../SendFlower/AddFlowerContainer";
+import AddFlowerContainer from "../SendFlower/SendFlowerContainer";
 import LightSensitivityContainer from "../LightSensitivity/LightSensitivityContainer";
 
 
@@ -62,11 +62,6 @@ const Filter = (props) => {
                     </div>
 
                     <div hidden={!isAdmin}>
-                        Фото в формате jpg или png
-                        <Form.Control type="file" onChange={(e) => props.setFile(e.target.files[0])}/>
-                    </div>
-
-                    <div hidden={!isAdmin}>
                         Описание
                         <Form.Control placeholder={"Сохраняется пока открыта страница"}
                                       value={props.filter.description}
@@ -75,8 +70,7 @@ const Filter = (props) => {
                 </div>
             </Form>
             <Button className="mt-2" variant="success" onClick={props.onSearch}>Найти</Button>
-            <br/>
-            {props.role === "admin" ? <AddFlowerContainer/> : null}
+
         </>
     )
 }

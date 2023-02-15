@@ -3,7 +3,11 @@ import {catalogAPI} from "../http/catalogAPI";
 
 let initialState = {
     arrCatalogs: [
-        {id: 0, nameCatalog: ""}
+        {
+            id: 0,
+            nameCatalog: "",
+            image: []
+        }
     ],
     isSuccessAdd: false
 }

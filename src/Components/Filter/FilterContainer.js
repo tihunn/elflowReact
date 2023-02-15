@@ -67,7 +67,6 @@ export default compose(connect(mapStateToProps, {
     setPrice,
     setWholesale,
     setAvailable,
-    setFile,
     setDescription,
     setIsSunAndShadow,
     setSunOrShadow,
