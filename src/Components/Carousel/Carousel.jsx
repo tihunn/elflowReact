@@ -10,6 +10,7 @@ const CarouselComponent = (props) => {
                          <img className={props.css.img}
                                src={process.env.REACT_APP_API_URL + img}
                                alt="картинка цветка"
+                              onClick={props.onClick}
                          />
                 </Carousel.Item>
             }) }
@@ -24,6 +25,7 @@ const CarouselComponent = (props) => {
                     : <img className={props.css.img}
                            src={process.env.REACT_APP_API_URL + props.image[0]}
                            alt="картинка цветка"
+                           onClick={props.onClick}
                     />}
             </div>
         );

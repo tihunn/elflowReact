@@ -9,12 +9,17 @@ import CarouselComponent from "../Carousel/Carousel";
 
 const FlowerItem = (props) => {
     const navigate = useNavigate()
+    const navClick = () => {
+        navigate(FLOWER_ROUTE + `/${props.flower.id}`)
+    }
 
     return (
-        <Row className={"mt-2"}>
-            <Card>
-                <div onClick={() => navigate(FLOWER_ROUTE + `/${props.flower.id}`)}>
-                    <CarouselComponent image={props.flower.image} css={css}/>
+        <Row className={"mt-2"} >
+            <div className={css.card}>
+
+                <CarouselComponent image={props.flower.image} css={css} onClick={navClick}/>
+
+                <div onClick={navClick}>
 
                     <h2 className={css.nameFlower}>{props.flower.nameFlower}</h2>
                     <div>Высота: {props.flower.height}</div>
@@ -22,12 +27,16 @@ const FlowerItem = (props) => {
                     <div>В наличии: {props.flower.available}</div>
                 </div>
 
-                <Button variant="success" className="m-2 "
-                        onClick={() => props.addOrder(props.flower.id)}>Заказать</Button>
+                <Button variant="success"
+                        className="m-2 "
+                        onClick={() => props.addOrder(props.flower.id)}
+                >
+                    Заказать
+                </Button>
                 {props.role === "admin"
                     ? <CatalogsSelectionContainer flowerId={props.flower.id}/>
                     : null}
-            </Card>
+            </div>
         </Row>
     )
 }

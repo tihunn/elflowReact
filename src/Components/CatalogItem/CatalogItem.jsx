@@ -18,7 +18,7 @@ const CatalogItem = (props) => {
     return (
         <Row className={"mt-2"}>
             <Card>
-                <CarouselComponent image={props.catalog.image} css={cssFlowerItem}/>
+                <CarouselComponent image={props.catalog.image} css={cssFlowerItem} onClick={onClick}/>
 
                 <h2>
                 <NavLink to={CATALOG_ROUTE + "/" + props.catalog.nameCatalog} className={css.link} onClick={onClick} >

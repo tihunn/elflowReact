@@ -6,8 +6,20 @@ const CatalogsSelection = (props) => {
     const AddOrDel = (catalogId) => {
         if (props.flowerId) {
             return () => props.addFlowerInCatalog(catalogId, props.flowerId)
+        } else if (props.catalogName) {
+            return () => props.updateCatalog(catalogId, props.catalogName)
         } else {
             return () => props.delCatalog(catalogId)
+        }
+    }
+
+    const title = () => {
+        if (props.flowerId) {
+            return "Добавить в каталог"
+        } else if (props.catalogName || props.catalogName === "") {
+            return "Обновить название каталога"
+        } else {
+            return "Удалить каталог"
         }
     }
 
@@ -29,7 +41,7 @@ const CatalogsSelection = (props) => {
 
 
     return (
-        <DropdownButton title={props.flowerId ? "Добавить в каталог" : "Удалить каталог"}>
+        <DropdownButton title={title()} className="m-2" disabled={props.disabled}>
             {catalogSelectionButton()}
         </DropdownButton>
     );

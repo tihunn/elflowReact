@@ -58,7 +58,7 @@ const FlowerPage = (props) => {
                 </FileUpload> : null}
 
 
-            < h2 style={{fontSize: "4vmax"}}><Editable value={props.flower.nameFlower}
+            < h2 style={{fontSize: "2vmax"}}><Editable value={props.flower.nameFlower}
                                                        dispatch={props.updateNameFlower}/></h2>
 
             Высота: <Editable value={props.flower.height} type={"number"} dispatch={props.updateHeight}/> cм.
@@ -95,8 +95,8 @@ const FlowerPage = (props) => {
             {isAdmin ?
                 <DropdownButton title="Удалить изображение" variant="danger" className="m-2">
                     {arrImg()}
-                </DropdownButton> : null}}
-
+                </DropdownButton> : null}
+            <br/>
             <Button variant="success"
                     className="m-2 "
                     onClick={() => props.addOrder(props.flower.id)}

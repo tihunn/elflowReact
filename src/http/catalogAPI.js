@@ -22,7 +22,7 @@ export const catalogAPI = {
         return data
     },
     async updateCatalog(catalogId, nameCatalog) {
-        const {data} = await $authHost.put(`/catalog${catalogId}`, {nameCatalog}, )
+        const {data} = await $authHost.put(`/catalog/${catalogId}`, {nameCatalog}, )
         return data
     },
 }

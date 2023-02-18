@@ -39,7 +39,7 @@ const ListFlowers = (props) => {
                     <FilterContainer/>
                 </Col>
                 <Col md={9} xl={10}>
-                    <Row sm={3} md={3} lg={4} xl={5} xxl={6}>
+                    <Row sm={1} md={2} lg={2} xl={3} xxl={4} >
                         {catalogsOrFlowers()}
                     </Row>
                     {location.pathname !== "/" ? <PaginationContainer/> : null}

@@ -1,7 +1,7 @@
 export const ADMIN_ROUTE = "/admin"
 export const LOGIN_ROUTE = "/login"
 export const REGISTRATION_ROUTE = "/reg"
-export const All_FLOWER_ROUTE = "/all"
+export const All_FLOWER_ROUTE = "/flower"
 export const CATALOGS_ROUTE = "/"
 export const ORDER_ROUTE = "/order"
 export const FLOWER_ROUTE = "/flower"
