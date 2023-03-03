@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:16-alpine
 
 WORKDIR /app
 
@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN npm run build
+
 EXPOSE 80
 
-CMD ["npm", "run", "react"]
+CMD ["node", "server.js"]
