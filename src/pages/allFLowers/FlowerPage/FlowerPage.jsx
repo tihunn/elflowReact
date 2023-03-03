@@ -7,6 +7,8 @@ import VariantsBloomTimeContainer from "../../../Components/VariantsBloomTime/Va
 import CarouselComponent from "../../../Components/Carousel/Carousel";
 import FileUpload from "../../../Components/FileUpload/FileUpload";
 import SendFlowerContainer from "../../../Components/SendFlower/SendFlowerContainer";
+import trash from "../../../ico/trash.svg"
+
 
 
 const FlowerPage = (props) => {
@@ -20,7 +22,7 @@ const FlowerPage = (props) => {
                 <img className={css.trash}
                      alt="Удалить файл"
                      onClick={() => props.delFile(index)}
-                     src={process.env.REACT_APP_API_URL + "/trash.svg"}
+                     src={trash}
                 />
             </div>
         })
@@ -34,7 +36,7 @@ const FlowerPage = (props) => {
                     <img className={css.trash}
                          alt="Удалить файл"
                          onClick={() => props.delImg(props.flower.id, el)}
-                         src={process.env.REACT_APP_API_URL + "/trash.svg"}
+                         src={trash}
                     />
                 </div>
             })

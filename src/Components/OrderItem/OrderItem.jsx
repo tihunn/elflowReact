@@ -4,6 +4,8 @@ import {useNavigate} from "react-router-dom";
 import {FLOWER_ROUTE} from "../AppRouter/const";
 import css from "../../style/OrderItem.module.css"
 import ButtonNumberFlowers from "./ButtonNumberFlowers";
+import trash from "../../ico/trash.svg"
+
 
 
 const OrderItem = (props) => {
@@ -38,7 +40,7 @@ const OrderItem = (props) => {
                     {props.order.price} Руб.
                 </div>
                 <div className={css.del} onClick={() => props.delOrder(props.order.id)}>
-                    <Image src={process.env.REACT_APP_API_URL + "/trash.svg"} className={css.trash} title="Удалить из заказа"/>
+                    <Image src={trash} className={css.trash} title="Удалить из заказа"/>
 
                 </div>
 

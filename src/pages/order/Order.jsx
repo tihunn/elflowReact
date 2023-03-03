@@ -2,8 +2,7 @@ import React from "react";
 import {Button, Col, Container, Image} from "react-bootstrap";
 import OrderItemContainer from "../../Components/OrderItem/OrderItemContainer";
 import css from "../../style/OrderItem.module.css";
-
-
+import trash from  "../../ico/trash.svg"
 
 
 
@@ -20,7 +19,7 @@ const Order = (props) => {
             <Col >
                 <div className={css.delAll} onClick={props.deleteAllOrders}>
                      Очистить весь заказ
-                    <Image src={process.env.REACT_APP_API_URL + "/trash.svg"} className={css.trash} title="Удалить из заказа"/>
+                    <Image src={trash} className={css.trash} title="Удалить из заказа"/>
                 </div>
 
                 {orders()}
