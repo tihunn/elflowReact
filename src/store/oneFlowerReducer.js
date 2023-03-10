@@ -2,18 +2,19 @@ import {flowerAPI} from "../http/flowerAPI";
 import {toggleIsFetching} from "./preloaderReducer";
 
 const initialState = {
-        id: -1,
-        nameFlower: "",
-        height: 0,
-        bloomTime: "",
-        sunOrShadow: true,
-        isSunAndShadow: true,
-        price: 200,
-        wholesale: 100,
-        available: 0,
-        description: "",
-        image: [],
-        arrFiles: [],
+    id: -1,
+    nameFlower: "",
+    height: 0,
+    bloomTime: "",
+    sunOrShadow: true,
+    isSunAndShadow: true,
+    price: 200,
+    wholesale: 100,
+    available: 0,
+    description: "",
+    image: [],
+    arrFiles: [],
+    messageServer: "",
 }
 
 export let oneFlowerReducer = (state = initialState, action) => {
@@ -63,54 +64,61 @@ export let oneFlowerReducer = (state = initialState, action) => {
                 delFile: state.arrFiles.splice(action.index, 1),
                 ...state,
             }
+        case "setMessageServer":
+            return {
+                messageServer: action.messageServer
+            }
     }
     return state
 }
 
-const setFlower = (flower) => ( {type: "setFlower", flower} )
-export const updateNameFlower = (nameFlower) => ( {type: "updateNameFlower", nameFlower} )
-export const updateHeight = (height) => ( {type: "updateHeight", height} )
-export const updatePrice = (price) => ( {type: "updatePrice", price} )
-export const updateWholesale = (wholesale) => ( {type: "updateWholesale", wholesale} )
-export const updateAvailable = (available) => ( {type: "updateAvailable", available} )
-export const updateDescription = (description) => ( {type: "updateDescription", description} )
+const setFlower = (flower) => ({type: "setFlower", flower})
+export const updateNameFlower = (nameFlower) => ({type: "updateNameFlower", nameFlower})
+export const updateHeight = (height) => ({type: "updateHeight", height})
+export const updatePrice = (price) => ({type: "updatePrice", price})
+export const updateWholesale = (wholesale) => ({type: "updateWholesale", wholesale})
+export const updateAvailable = (available) => ({type: "updateAvailable", available})
+export const updateDescription = (description) => ({type: "updateDescription", description})
 export const addFile = (file) => ({type: "addFile", file})
 export const delFile = (index) => ({type: "delFile", index})
+export const setMessageServer = (messageServer) => ({type: "setMessageServer", messageServer})
 
 
 export const getFlower = (id) => (dispatch) => {
-    dispatch( toggleIsFetching(true) )
+    dispatch(toggleIsFetching(true))
     flowerAPI.getOneFlower(id).then(data => {
         if (data.rows.length !== 0) {
-            dispatch( setFlower(data.rows[0]) )
+            dispatch(setFlower(data.rows[0]))
         }
-        dispatch( toggleIsFetching(false) )
+        dispatch(toggleIsFetching(false))
     })
 }
 export const deleteFlower = (id) => (dispatch) => {
-    flowerAPI.deleteFlower(id).then( () => {
-        dispatch( setFlower({}) )
+    flowerAPI.deleteFlower(id).then(() => {
+        dispatch(setFlower({}))
     })
 }
 export const updateFlower = (formData) => (dispatch) => {
-    flowerAPI.updateFlower(formData).then(() => {})
+    flowerAPI.updateFlower(formData).then(() => {
+    })
 }
 export const addImg = (formData) => (dispatch) => {
     flowerAPI.addImg(formData).then((data) => {
         if (data === "Запрос успешно обработан") {
             let id = formData.get("id")
-            dispatch( getFlower(id) )
+            dispatch(getFlower(id))
         }
     })
 }
-export const createFlower = (formData) => () => {
+export const createFlower = (formData) => (dispatch) => {
     flowerAPI.createFlower(formData).then(data => {
+        dispatch( setMessageServer(data) )
     })
 }
 export const delImg = (id, nameImg) => (dispatch) => {
     flowerAPI.delImg(nameImg).then(data => {
         if (data === "Запрос на удаление успешно обработан") {
-            dispatch( getFlower(id) )
+            dispatch(getFlower(id))
         }
     })
 }

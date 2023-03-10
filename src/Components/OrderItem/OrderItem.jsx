@@ -5,6 +5,7 @@ import {FLOWER_ROUTE} from "../AppRouter/const";
 import css from "../../style/OrderItem.module.css"
 import ButtonNumberFlowers from "./ButtonNumberFlowers";
 import trash from "../../ico/trash.svg"
+import CarouselComponent from "../Carousel/Carousel";
 
 
 
@@ -15,7 +16,7 @@ const OrderItem = (props) => {
         <Row className={"mt-2"}>
             <Card className={css.main_orderItem_wrapper}>
                 <div className={css.img} onClick={() => navigate(FLOWER_ROUTE + `/${props.order.id}`)}>
-                    <img className={css.img} src={process.env.REACT_APP_API_URL + props.order.img} />
+                    <CarouselComponent image={props.order.image} css={css}/>
                 </div>
                 <div className={css.text}>
                     <h1>

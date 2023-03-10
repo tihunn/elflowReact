@@ -1,5 +1,5 @@
-import React from "react";
-import {Button, Container, DropdownButton} from "react-bootstrap";
+import React, {useState} from "react";
+import {Button, Container, DropdownButton, Modal} from "react-bootstrap";
 import css from "../../../style/FlowerPage.module.css"
 import Editable from "../../../Components/Editable/Editable";
 import LightSensitivityContainer from "../../../Components/LightSensitivity/LightSensitivityContainer";
@@ -43,8 +43,28 @@ const FlowerPage = (props) => {
         }
     }
 
+
+    // let [showModal, setShowModal] = useState(false)
+    // const toggleShowModal = () => { setShowModal(!showModal) }
+    const adminModal = () => {
+        return <Modal show={props.messageServer} onHide={() => props.setMessageServer("")}>
+            <Modal.Header closeButton>
+                <Modal.Title>Ответ сервера</Modal.Title>
+            </Modal.Header>
+            <Modal.Body> {props.messageServer} </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={() => props.setMessageServer("")}>
+                    Хорошо
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    }
+
+
+
     return (
         <Container>
+            {/*{adminModal()}*/}
 
             <CarouselComponent image={props.flower.image} css={css}/>
 
