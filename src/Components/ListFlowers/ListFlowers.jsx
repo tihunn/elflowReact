@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import FilterContainer from "../Filter/FilterContainer";
 import PaginationContainer from "../Pagination/PaginationContainer";
 import CatalogItemContainer from "../CatalogItem/CatalogItemContainer";
@@ -19,7 +19,7 @@ const ListFlowers = (props) => {
                         catalog={catalog}
                     />)
             }
-        } else if (props.flowers && props.flowers[0].id) {
+        } else if (props.flowers.length !== 0 && props.flowers[0].id) {
             return props.flowers.map(flower =>
                 <FlowerItemContainer
                     key={flower.id}
@@ -27,7 +27,7 @@ const ListFlowers = (props) => {
                     addOrder={props.addOrder}
                 />)
         } else {
-            return <h1 className={"mt-2 text-center"}> Каталог пуст </h1>
+            return <h1 className={"mt-2 text-center"}> Ничего не найдено </h1>
         }
     }
 

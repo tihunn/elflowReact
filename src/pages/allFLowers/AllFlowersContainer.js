@@ -1,7 +1,6 @@
-import React, {Component, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getFlowers} from "../../store/flowersReducer";
-import Preload from "../../Components/Preload/Preload";
 import ListFlowersContainer from "../../Components/ListFlowers/ListFlowersContainer";
 
 
@@ -21,5 +20,7 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-    mapStateToProps, {getFlowers}
+    mapStateToProps, {
+        getFlowers
+    }
 )(FlowersContainer);

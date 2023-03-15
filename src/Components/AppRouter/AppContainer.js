@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {checkUser} from "../../store/userReducer";
 import {connect} from "react-redux";
-import {getFlowers} from "../../store/flowersReducer";
 import Preload from "../Preload/Preload";
 import AppRouter from "./AppRouter";
 
@@ -20,10 +19,8 @@ const AppContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        role: state.user.role,
-        isFetching: state.preloader.isFetching,
         isAuth: state.user.isAuth
     }
 }
 
-export default connect(mapStateToProps, {checkUser, getFlowers})(AppContainer);
+export default connect(mapStateToProps, {checkUser})(AppContainer);

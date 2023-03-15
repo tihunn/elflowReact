@@ -49,7 +49,7 @@ export const publicRote = [
         Component: FlowerPageContainer
     },
     {
-        path: CATALOG_ROUTE + "/:nameFlower",
+        path: CATALOG_ROUTE + "/:idCatalog",
         Component: ListFlowersContainer
     },
 

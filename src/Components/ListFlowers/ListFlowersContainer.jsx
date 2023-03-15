@@ -1,5 +1,4 @@
-import React, {useEffect} from "react";
-import {getFlowers} from "../../store/flowersReducer";
+import React from "react";
 import {connect} from "react-redux";
 import ListFlowers from "./ListFlowers";
 import Preload from "../Preload/Preload";
@@ -24,4 +23,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {getFlowers, addOrder})(ListFlowersContainer)
+export default connect(mapStateToProps, {addOrder})(ListFlowersContainer)

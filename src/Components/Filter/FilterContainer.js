@@ -5,7 +5,6 @@ import {
     setAvailable,
     setChangeCheckbox,
     setDescription,
-    setFile,
     setHeight,
     setHeightMin,
     setIsSunAndShadow,
@@ -14,7 +13,7 @@ import {
     setSunOrShadow,
     setWholesale
 } from "../../store/FilterReduser";
-import {searchFlowers} from "../../store/flowersReducer";
+import {getFlowers} from "../../store/flowersReducer";
 import {compose} from "redux";
 import withCreatorStrBloomTime from "../../hoc/withCreatorStrBloomTime";
 import withCreatorStrLightSensitivity from "../../hoc/withCreatorStrLightSensitivity";
@@ -45,7 +44,7 @@ const FilterContainer = (props) => {
         }
 
         if (Object.keys(isSearch).length > 0) {
-            props.searchFlowers(isSearch)
+            props.getFlowers(1, undefined, isSearch)
         }
     }
 
@@ -71,5 +70,5 @@ export default compose(connect(mapStateToProps, {
     setIsSunAndShadow,
     setSunOrShadow,
     setChangeCheckbox,
-    searchFlowers
+    getFlowers
 }), withCreatorStrBloomTime, withCreatorStrLightSensitivity)(FilterContainer)

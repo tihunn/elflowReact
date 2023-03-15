@@ -45,41 +45,25 @@ const setTotalCount = (totalCount) => ({type: "setTotalCount", totalCount})
 const setActivePage = (activePage) => ({type: "setActivePage", activePage})
 const cleanStateFlowers = () => ({type: "cleanStateFlowers"})
 
-export const getFlowers = (page = 1) => (dispatch) => {
-    dispatch(toggleIsFetching(true))
-    dispatch(setActivePage(page))
-    flowerAPI.getFlowers(page).then(data => {
-        dispatch(setFlowers(data.rows))
-        dispatch(setTotalCount(data.count))
-        dispatch(toggleIsFetching(false))
-    })
-}
-export const LoadMoreFlowers = (page) => (dispatch) => {
-    dispatch(setActivePage(page))
-    flowerAPI.getFlowers(page).then(data => {
-        dispatch(addFlowers(data.rows))
-    })
-}
 
-export const searchFlowers = (paramsData, page = 1) => (dispatch) => {
+export const getFlowers = (page = 1, idCatalog, paramsData) => (dispatch) => {
     dispatch(toggleIsFetching(true))
     dispatch(setActivePage(page))
-    flowerAPI.searchFlowers(paramsData, page).then(data => {
-        dispatch(setFlowers(data.rows))
-        dispatch(setTotalCount(data.count))
-        dispatch(toggleIsFetching(false))
-    })
-}
-export const getCatalog = (id, page = 1) => (dispatch) => {
-    dispatch(toggleIsFetching(true))
-    dispatch(setActivePage(page))
-    catalogAPI.getCatalog(id, page).then(data => {
-        if (data === "Каталог пуст") {
-            dispatch(cleanStateFlowers())
-        } else if (data) {
+    if (idCatalog) {
+        catalogAPI.getCatalog(idCatalog, page).then(data => {
+            if (data === "Каталог пуст") {
+                dispatch(cleanStateFlowers())
+            } else if (data) {
+                dispatch(setFlowers(data.rows))
+                dispatch(setTotalCount(data.count))
+            }
+            dispatch(toggleIsFetching(false))
+        })
+    } else {
+        flowerAPI.searchFlowers(page, 12, paramsData).then(data => {
             dispatch(setFlowers(data.rows))
             dispatch(setTotalCount(data.count))
-        }
-        dispatch(toggleIsFetching(false))
-    })
+            dispatch(toggleIsFetching(false))
+        })
+    }
 }

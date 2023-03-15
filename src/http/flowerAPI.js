@@ -14,16 +14,12 @@ export const flowerAPI = {
         const {data} = await $authHost.put(`/flower/`, formData)
         return data
     },
-    async getFlowers(page = 1, limit = 12) {
-        const {data} = await $host.get("/flower", {params: {page, limit}} )
-        return data
-    },
     async getOneFlower(id) {
         const {data} = await $host.get(`/flower/${id}`)
         return data
     },
-    async searchFlowers(paramsData, page = 1, limit = 12) {
-        const {data} = await $host.get(`/flower/`, {params: {...paramsData, page, limit}})
+    async searchFlowers(page = 1, limit = 12, paramsData) {
+        const {data} = await $host.get(`/flower/`, {params: {page, limit, ...paramsData}})
         return data
     },
     async addImg(formData) {
