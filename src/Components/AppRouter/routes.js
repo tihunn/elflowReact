@@ -6,7 +6,7 @@ import {
     REGISTRATION_ROUTE,
     All_FLOWER_ROUTE,
     CATALOGS_ROUTE,
-    CATALOG_ROUTE
+    CATALOG_ROUTE, ADMIN_ORDER_ROUTE
 } from "./const";
 import FlowerPageContainer from "../../pages/allFLowers/FlowerPage/FlowerPageContainer";
 import AuthContainer from "../../pages/auth/AuthContainer";
@@ -15,6 +15,7 @@ import AdminContainer from "../../pages/admin/AdminContainer";
 import ListFlowersContainer from "../ListFlowers/ListFlowersContainer";
 import FlowersContainer from "../../pages/allFLowers/AllFlowersContainer";
 import CatalogsContainer from "../../pages/catalogs (index)/CatalogsContainer";
+import AdminOrderContainer from "../AdminOrder/AdminOrderContainer";
 
 export const authRoute = [
     {
@@ -24,6 +25,10 @@ export const authRoute = [
     {
         path: ORDER_ROUTE,
         Component: OrderContainer
+    },
+    {
+        path: ADMIN_ORDER_ROUTE,
+        Component: AdminOrderContainer
     },
 ]
 

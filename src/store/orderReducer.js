@@ -4,7 +4,8 @@ import filter from "../Components/Filter/Filter";
 
 
 const initialState = {
-    orders: []
+    orders: [],
+    listOrders: []
 }
 
 
@@ -24,6 +25,11 @@ export let orderReducer = (state = initialState, action) => {
                 ...state,
                 orders: state.orders.filter( order => order.id !== action.id )
             }
+        case "setListOrders":
+            return {
+                ...state,
+                listOrders: action.listOrders
+            }
     }
     return state
 }
@@ -32,6 +38,7 @@ export let orderReducer = (state = initialState, action) => {
 const setOrders = (orders) => ( {type: "setOrders", orders} )
 const cleanOrders = () => ( {type: "cleanOrders",} )
 const deleteOrder = (id) => ( {type: "delOrder", id} )
+const setListOrders = (listOrders) => ( {type: "setListOrders", listOrders} )
 
 
 export const addOrder = (id) => (dispatch) => {
@@ -64,6 +71,13 @@ export const deleteAllOrders = (id) => (dispatch) => {
     dispatch( toggleIsFetching(true) )
     orderAPI.delOrders().then( (data)=>{
         dispatch( cleanOrders() )
+        dispatch( toggleIsFetching(false) )
+    })
+}
+export const listOrders = (statusSend) => (dispatch) => {
+    dispatch( toggleIsFetching(true) )
+    orderAPI.getOrders(statusSend).then( (data)=>{
+        dispatch( setListOrders() )
         dispatch( toggleIsFetching(false) )
     })
 }
