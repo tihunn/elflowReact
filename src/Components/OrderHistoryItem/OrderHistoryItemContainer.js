@@ -1,16 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import AdminOrder from "./AdminOrder";
-import {listOrders} from "../../store/orderReducer";
+import OrderHistoryItem from "./OrderHistoryItem";
+
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        role: state.user.user.role,
+    };
 }
 
 
 export default connect(
     mapStateToProps,
     {
-        listOrders
+
     }
-)(AdminOrder);
+)(OrderHistoryItem);

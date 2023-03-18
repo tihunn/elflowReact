@@ -2,20 +2,18 @@ import React from "react";
 import {connect} from "react-redux";
 import ListFlowers from "./ListFlowers";
 import Preload from "../Preload/Preload";
-import {addOrder} from "../../store/orderReducer";
 
 
 const ListFlowersContainer = (props) => {
 
     if (props.isFetching) {return <Preload/>}
     return <>
-        <ListFlowers role={props.role} flowers={props.flowers} addOrder={props.addOrder} catalogs={props.catalogs}/>
+        <ListFlowers flowers={props.flowers} addOrder={props.addOrder} catalogs={props.catalogs}/>
     </>
 }
 
 let mapStateToProps = (state) => {
     return {
-        role: state.user.role,
         flowers: state.flowers.flowers,
         activePage: state.flowers.activePage,
         isFetching: state.preloader.isFetching,
@@ -23,4 +21,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {addOrder})(ListFlowersContainer)
+export default connect(mapStateToProps, {})(ListFlowersContainer)

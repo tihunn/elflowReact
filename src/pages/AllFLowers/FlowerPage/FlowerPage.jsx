@@ -47,11 +47,11 @@ const FlowerPage = (props) => {
     // let [showModal, setShowModal] = useState(false)
     // const toggleShowModal = () => { setShowModal(!showModal) }
     const adminModal = () => {
-        return <Modal show={props.messageServer} onHide={() => props.setMessageServer("")}>
+        return <Modal show={props.flower.messageServer} onHide={() => props.setMessageServer("")}>
             <Modal.Header closeButton>
                 <Modal.Title>Ответ сервера</Modal.Title>
             </Modal.Header>
-            <Modal.Body> {props.messageServer} </Modal.Body>
+            <Modal.Body> {props.flower.messageServer} </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={() => props.setMessageServer("")}>
                     Хорошо
@@ -64,7 +64,7 @@ const FlowerPage = (props) => {
 
     return (
         <Container>
-            {/*{adminModal()}*/}
+            {adminModal()}
 
             <CarouselComponent image={props.flower.image} css={css}/>
 
@@ -121,7 +121,7 @@ const FlowerPage = (props) => {
             <br/>
             <Button variant="success"
                     className="m-2 "
-                    onClick={() => props.addOrder(props.flower.id)}
+                    onClick={() => props.addOrder(props.flower.id, props.isAuth)}
             >
                 Заказать
             </Button>

@@ -7,7 +7,7 @@ import {
     ADMIN_ROUTE,
     CATALOGS_ROUTE,
     All_FLOWER_ROUTE,
-    ADMIN_ORDER_ROUTE
+    ORDER_HISTORY_ROUTE
 } from "../AppRouter/const"
 import css from "../../style/admin.module.css"
 
@@ -27,10 +27,6 @@ const NavBar = ({role, isAuth, logOut}) => {
 
                     {isAuth ?
                         <Nav className="ml-auto" style={{color: "white"}}>
-                            {role === "admin" ?
-                                <Button variant={"outline-light"}>
-                                    <NavLink to={ADMIN_ORDER_ROUTE}> Сделанные заказы </NavLink>
-                                </Button> : null}
                             <Button variant={"outline-light"}><NavLink to={ORDER_ROUTE}> Заказы </NavLink></Button>
                             <Button variant={"outline-light"} onClick={logOut}>Выйти</Button>
                         </Nav>

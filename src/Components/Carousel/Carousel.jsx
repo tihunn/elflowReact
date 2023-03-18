@@ -8,9 +8,11 @@ const CarouselComponent = (props) => {
             { props.image.map(img => {
                 return <Carousel.Item key={img}>
                          <img className={props.css.img}
-                               src={process.env.REACT_APP_API_URL + img}
-                               alt="картинка цветка"
+                              alt="картинка цветка"
                               onClick={props.onClick}
+                              src={props.compressed
+                                  ? process.env.REACT_APP_API_URL + "compressed/" + img
+                                  : process.env.REACT_APP_API_URL + img}
                          />
                 </Carousel.Item>
             }) }

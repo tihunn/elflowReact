@@ -1,4 +1,5 @@
 import {userAPI} from "../http/userAPI";
+import {addOrder} from "./orderReducer";
 
 const initialState = {
     user: {
@@ -35,11 +36,16 @@ export const checkUser = () => (dispatch) => {
         dispatch( setIsAuth(true) )
     })
 }
-export const loginOrReg = (email, password, isLogin) => (dispatch) => {
-    userAPI.loginOrReg(email, password, isLogin).then(userDecoded => {
+export const loginOrReg = (email, password, isLogin, idOrder) => (dispatch) => {
+    userAPI.loginOrReg(email, password, isLogin, idOrder).then(userDecoded => {
         dispatch( setUser(userDecoded) )
         dispatch( setIsAuth(true) )
+        if (idOrder) {
+            dispatch( addOrder(idOrder, true) )
+        }
     })
+
+
 }
 export const logOut = () => (dispatch) => {
     dispatch( setUser({}) )

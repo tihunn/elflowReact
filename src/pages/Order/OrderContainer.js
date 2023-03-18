@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {checkUser} from "../../store/userReducer";
-import {deleteAllOrders, getOrders, listOrders, postOrders} from "../../store/orderReducer";
+import {deleteAllOrders, getOrders, orderHistory, postOrders} from "../../store/orderReducer";
 import Order from "./Order";
 import Preload from "../../Components/Preload/Preload";
 
@@ -21,14 +21,16 @@ const OrderContainer = (props) => {
     return <Order orders={props.orders}
                   postOrders={props.postOrders}
                   deleteAllOrders={props.deleteAllOrders}
-                  role={props.role}/>
+                  orderHistory={props.orderHistory}
+                  draftOrder={props.draftOrder}
+    />
 }
 
 let mapStateToProps = (state) => {
     return {
         isFetching: state.preloader.isFetching,
         orders: state.orders.orders,
-        role: state.user.user.role
+        draftOrder: state.orders.draftOrder
     }
 }
 
@@ -37,5 +39,5 @@ export default connect(mapStateToProps, {
     getOrders,
     postOrders,
     deleteAllOrders,
-    listOrders
+    orderHistory
 })(OrderContainer);

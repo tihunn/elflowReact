@@ -5,7 +5,7 @@ const FileUpload = ({setFile, accept, children}) => {
     const ref = useRef()
 
     const onChange = (e) => {
-        if (e.target.files) {
+        if (e.target.files.length !== 0) {
             setFile(e.target.files[0])
         }
     }

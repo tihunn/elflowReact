@@ -6,16 +6,18 @@ import {
     REGISTRATION_ROUTE,
     All_FLOWER_ROUTE,
     CATALOGS_ROUTE,
-    CATALOG_ROUTE, ADMIN_ORDER_ROUTE
+    CATALOG_ROUTE,
+    ORDER_HISTORY_ROUTE
 } from "./const";
-import FlowerPageContainer from "../../pages/allFLowers/FlowerPage/FlowerPageContainer";
-import AuthContainer from "../../pages/auth/AuthContainer";
-import OrderContainer from "../../pages/order/OrderContainer";
-import AdminContainer from "../../pages/admin/AdminContainer";
+import FlowerPageContainer from "../../pages/AllFLowers/FlowerPage/FlowerPageContainer";
+import AuthContainer from "../../pages/Auth/AuthContainer";
+import OrderContainer from "../../pages/Order/OrderContainer";
+import AdminContainer from "../../pages/Admin/AdminContainer";
 import ListFlowersContainer from "../ListFlowers/ListFlowersContainer";
-import FlowersContainer from "../../pages/allFLowers/AllFlowersContainer";
-import CatalogsContainer from "../../pages/catalogs (index)/CatalogsContainer";
-import AdminOrderContainer from "../AdminOrder/AdminOrderContainer";
+import FlowersContainer from "../../pages/AllFLowers/AllFlowersContainer";
+import CatalogsContainer from "../../pages/Catalogs (index)/CatalogsContainer";
+import OrderHistoryContainer from "../../pages/OrderHistory/OrderHistoryContainer";
+
 
 export const authRoute = [
     {
@@ -27,8 +29,8 @@ export const authRoute = [
         Component: OrderContainer
     },
     {
-        path: ADMIN_ORDER_ROUTE,
-        Component: AdminOrderContainer
+        path: ORDER_HISTORY_ROUTE,
+        Component: OrderHistoryContainer
     },
 ]
 

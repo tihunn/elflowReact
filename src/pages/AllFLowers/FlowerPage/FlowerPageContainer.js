@@ -46,7 +46,8 @@ let mapStateToProps = (state) => {
     return {
         role: state.user.user.role,
         flower: state.oneFlower,
-        isFetching: state.preloader.isFetching
+        isFetching: state.preloader.isFetching,
+        isAuth: state.user.isAuth
     }
 }
 

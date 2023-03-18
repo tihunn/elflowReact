@@ -17,7 +17,7 @@ const FlowerItem = (props) => {
         <Row className={"mt-2"} >
             <div className={css.card}>
 
-                <CarouselComponent image={props.flower.image} css={css} onClick={navClick}/>
+                <CarouselComponent image={props.flower.image} css={css} onClick={navClick} compressed={true}/>
 
                 <div onClick={navClick}>
 
@@ -29,7 +29,7 @@ const FlowerItem = (props) => {
 
                 <Button variant="success"
                         className="m-2 "
-                        onClick={() => props.addOrder(props.flower.id)}
+                        onClick={() => props.addOrder(props.flower.id, props.isAuth)}
                 >
                     Заказать
                 </Button>

@@ -11,8 +11,8 @@ export const flowerAPI = {
         return data
     },
     async updateFlower(formData) {
-        const {data} = await $authHost.put(`/flower/`, formData)
-        return data
+         await $authHost.put(`/flower/`, formData)
+
     },
     async getOneFlower(id) {
         const {data} = await $host.get(`/flower/${id}`)

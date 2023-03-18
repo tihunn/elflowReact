@@ -24,7 +24,6 @@ const ListFlowers = (props) => {
                 <FlowerItemContainer
                     key={flower.id}
                     flower={flower}
-                    addOrder={props.addOrder}
                 />)
         } else {
             return <h1 className={"mt-2 text-center"}> Ничего не найдено </h1>

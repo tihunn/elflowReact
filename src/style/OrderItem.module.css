@@ -53,9 +53,29 @@
 .delAll {
     padding: 2px;
     display: inline-block;
+    margin: 2px;
 }
 
 .delAll:hover {
+    display: inline-block;
+    padding: 2px;
+    background: orange;
+    border-radius: 10px;
+    margin: 2px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.cansel {
+    grid-area: del;
+    align-self: center;
+    border-radius: 10px;
+}
+
+.cansel:hover {
     display: inline-block;
     padding: 2px;
     background: orange;

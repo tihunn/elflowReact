@@ -66,7 +66,13 @@ export let oneFlowerReducer = (state = initialState, action) => {
             }
         case "setMessageServer":
             return {
+                ...state,
                 messageServer: action.messageServer
+            }
+        case "cleanMessageServer":
+            return {
+                ...state,
+                messageServer: ""
             }
     }
     return state
@@ -82,6 +88,7 @@ export const updateDescription = (description) => ({type: "updateDescription", d
 export const addFile = (file) => ({type: "addFile", file})
 export const delFile = (index) => ({type: "delFile", index})
 export const setMessageServer = (messageServer) => ({type: "setMessageServer", messageServer})
+export const cleanMessageServer = () => ({type: "cleanMessageServer"})
 
 
 export const getFlower = (id) => (dispatch) => {
@@ -95,11 +102,13 @@ export const getFlower = (id) => (dispatch) => {
 }
 export const deleteFlower = (id) => (dispatch) => {
     flowerAPI.deleteFlower(id).then(() => {
-        dispatch(setFlower({}))
+        dispatch(setFlower(initialState))
     })
 }
 export const updateFlower = (formData) => (dispatch) => {
     flowerAPI.updateFlower(formData).then(() => {
+        let id = formData.get("id")
+        dispatch(getFlower(id))
     })
 }
 export const addImg = (formData) => (dispatch) => {
