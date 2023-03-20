@@ -10,8 +10,15 @@ const SendFlower = (props) => {
         formData.append("price", `${props.state.price}`)
         formData.append("wholesale", `${props.state.wholesale}`)
         formData.append("available", `${props.state.available}`)
-        formData.append("description", props.state.description)
-        formData.append("alternativeNames", props.state.alternativeNames)
+
+        props.state.description === " "
+            ? formData.append("description", "")
+            : formData.append("description", props.state.description)
+
+        props.state.alternativeNames === " "
+            ? formData.append("alternativeNames", "")
+            : formData.append("alternativeNames", props.state.alternativeNames)
+
 
         if (props.state.arrFiles.length !== 0) {
             props.state.arrFiles.forEach( (file, index) => {

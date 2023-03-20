@@ -103,7 +103,7 @@ const FlowerPage = (props) => {
                 : null}
             {!isAdmin && props.flower.available < 0 ? <div className={css.off}>Нет в наличии</div> : null}
 
-            {isAdmin && props.flower.alternativeNames
+            {isAdmin || props.flower.alternativeNames
                 ? <div>Альтернативные названия:
                     <EditableContainer value={props.flower.alternativeNames} dispatch={props.updateAlternativeNames}/>
                 </div>
