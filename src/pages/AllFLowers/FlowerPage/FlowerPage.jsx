@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import {Button, Container, DropdownButton, Modal} from "react-bootstrap";
 import css from "../../../style/FlowerPage.module.css"
-import Editable from "../../../Components/Editable/Editable";
+import EditableContainer from "../../../Components/Editable/EditableContainer";
 import LightSensitivityContainer from "../../../Components/LightSensitivity/LightSensitivityContainer";
 import VariantsBloomTimeContainer from "../../../Components/VariantsBloomTime/VariantsBloomTimeContainer";
 import CarouselComponent from "../../../Components/Carousel/Carousel";
@@ -43,8 +43,7 @@ const FlowerPage = (props) => {
     }
 
 
-    // let [showModal, setShowModal] = useState(false)
-    // const toggleShowModal = () => { setShowModal(!showModal) }
+
     const adminModal = () => {
         return <Modal show={props.flower.messageServer} onHide={() => props.setMessageServer("")}>
             <Modal.Header closeButton>
@@ -78,10 +77,10 @@ const FlowerPage = (props) => {
                 </FileUpload> : null}
 
 
-            < h2 style={{fontSize: "2vmax"}}><Editable value={props.flower.nameFlower}
-                                                       dispatch={props.updateNameFlower}/></h2>
+            < h2 style={{fontSize: "2vmax"}}><EditableContainer value={props.flower.nameFlower}
+                                                                dispatch={props.updateNameFlower}/></h2>
 
-            Высота: <Editable value={props.flower.height} type={"number"} dispatch={props.updateHeight}/> cм.
+            Высота: <EditableContainer value={props.flower.height} type={"number"} dispatch={props.updateHeight}/> cм.
 
             <div>Время цветения: {props.flower.bloomTime}</div>
             {isAdmin ? <VariantsBloomTimeContainer/> : null}
@@ -89,31 +88,31 @@ const FlowerPage = (props) => {
             <div>Световосприимчивость: {props.flower.lightSensitivity}</div>
             {isAdmin ? <LightSensitivityContainer/> : null}
 
-            <div> Цена: <Editable value={props.flower.price} type={"number"} dispatch={props.updatePrice}/></div>
+            <div> Цена: <EditableContainer value={props.flower.price} type={"number"} dispatch={props.updatePrice}/></div>
 
             {isAdmin || props.role === "wholesale" ?
-                <div>Оптовая цена: <Editable value={props.flower.wholesale} type={"number"}
-                                             dispatch={props.updateWholesale}/>
+                <div>Оптовая цена: <EditableContainer value={props.flower.wholesale} type={"number"}
+                                                      dispatch={props.updateWholesale}/>
                 </div> : null}
 
             {isAdmin
                 ? <div title={' Если написать отрицательное число то будет отображатся что товара `нет в налии" '}>
                     В наличии:
-                    <Editable value={props.flower.available} type={"number"} dispatch={props.updateAvailable}/>
+                    <EditableContainer value={props.flower.available} type={"number"} dispatch={props.updateAvailable}/>
                 </div>
                 : null}
             {!isAdmin && props.flower.available < 0 ? <div className={css.off}>Нет в наличии</div> : null}
 
-            {isAdmin || props.flower.alternativeNames
+            {isAdmin && props.flower.alternativeNames
                 ? <div>Альтернативные названия:
-                    <Editable value={props.flower.alternativeNames} dispatch={props.updateAlternativeNames}/>
+                    <EditableContainer value={props.flower.alternativeNames} dispatch={props.updateAlternativeNames}/>
                 </div>
                 : null}
 
             {isAdmin || props.flower.description
                 ? <div>
                     Описание:
-                    <Editable value={props.flower.description} dispatch={props.updateDescription}/>
+                    <EditableContainer value={props.flower.description} dispatch={props.updateDescription}/>
                 </div>
                 : null}
 
