@@ -9,7 +9,7 @@ import {
     setHeightMin,
     setIsSunAndShadow,
     setNameFlower,
-    setPrice,
+    setPrice, setSearchData,
     setSunOrShadow,
     setWholesale
 } from "../../store/FilterReduser";
@@ -17,11 +17,14 @@ import {getFlowers} from "../../store/flowersReducer";
 import {compose} from "redux";
 import withCreatorStrBloomTime from "../../hoc/withCreatorStrBloomTime";
 import withCreatorStrLightSensitivity from "../../hoc/withCreatorStrLightSensitivity";
+import {useLocation, useNavigate} from "react-router-dom";
+
 
 
 const FilterContainer = (props) => {
     const [hide, setHide] = useState(true)
     const [isHeight, setIsHeight] = useState(true)
+    const navigate = useNavigate();
     const onHide = () => {
         setHide(!hide)
     }
@@ -44,6 +47,7 @@ const FilterContainer = (props) => {
         }
 
         if (Object.keys(isSearch).length > 0) {
+            props.setSearchData(isSearch)
             props.getFlowers(1, undefined, isSearch)
         }
     }
@@ -70,5 +74,6 @@ export default compose(connect(mapStateToProps, {
     setIsSunAndShadow,
     setSunOrShadow,
     setChangeCheckbox,
-    getFlowers
+    getFlowers,
+    setSearchData
 }), withCreatorStrBloomTime, withCreatorStrLightSensitivity)(FilterContainer)

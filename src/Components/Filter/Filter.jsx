@@ -26,21 +26,25 @@ const Filter = (props) => {
 
                     <LightSensitivityContainer/>
 
-                    <Button className="mt-2 d-block" onClick={props.clickHeight}>Высота (в см)</Button>
-                    <div hidden={props.isHeight} className="row text-center">
-                        <div className="col">
-                            Min
-                            <Form.Control value={props.filter.heightMin}
-                                          onChange={(e) => props.setHeightMin(Number(e.target.value))}
-                                          type="number"/>
+                    {isAdmin
+                        ? <div>
+                            <Button className="mt-2 d-block" onClick={props.clickHeight}>Высота (в см)</Button>
+                            <div hidden={props.isHeight} className="row text-center">
+                                <div className="col">
+                                    Min
+                                    <Form.Control value={props.filter.heightMin}
+                                                  onChange={(e) => props.setHeightMin(Number(e.target.value))}
+                                                  type="number"/>
+                                </div>
+                                <div className="col">
+                                    Max
+                                    <Form.Control className="col" value={props.filter.height}
+                                                  onChange={(e) => props.setHeight(Number(e.target.value))}
+                                                  type="number"/>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col">
-                            Max
-                            <Form.Control className="col" value={props.filter.height}
-                                          onChange={(e) => props.setHeight(Number(e.target.value))}
-                                          type="number"/>
-                        </div>
-                    </div>
+                        : null}
 
                     <div hidden={!isAdmin}>
                         Цена

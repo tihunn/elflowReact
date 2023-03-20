@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {logOut} from "../../store/userReducer";
 import NavBar from "./NavBar";
+import {cleanSearchData} from "../../store/FilterReduser";
 
 
 let mapStateToProps = (state) => {
@@ -11,4 +12,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {logOut})(NavBar)
+export default connect(mapStateToProps, {
+    logOut,
+    cleanSearchData
+})(NavBar)

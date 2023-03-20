@@ -8,6 +8,7 @@ function mapStateToProps(state) {
     return {
         activePage: state.flowers.activePage,
         totalCount: state.flowers.totalCount,
+        searchData: state.filter.searchData
     }
 }
 

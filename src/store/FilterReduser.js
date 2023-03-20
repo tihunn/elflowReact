@@ -18,7 +18,8 @@ const initialState = {
     wholesale: 100,
     available: 0,
     description: "",
-    isHiddenLightSensitivity: true
+    isHiddenLightSensitivity: true,
+    searchData: undefined
 }
 
 export let filterReducer = (state = initialState, action) => {
@@ -85,6 +86,16 @@ export let filterReducer = (state = initialState, action) => {
                 ...state,
                 isHiddenLightSensitivity: !state.isHiddenLightSensitivity
             }
+        case "setSearchData":
+            return {
+                ...state,
+                searchData: action.searchData
+            }
+        case "cleanSearchData":
+            return {
+                ...state,
+                searchData: ""
+            }
     }
     return state
 }
@@ -95,10 +106,11 @@ export const setHeightMin = (heightMin) => ({type: "setHeightMin", heightMin})
 export const setPrice = (price) => ({type: "setPrice", price})
 export const setWholesale = (wholesale) => ({type: "setWholesale", wholesale})
 export const setAvailable = (available) => ({type: "setAvailable", available})
-
 export const setDescription = (description) => ({type: "setDescription", description})
 export const setSunOrShadow = () => ({type: "setSunOrShadow"})
 export const setIsSunAndShadow = () => ({type: "setIsSunAndShadow"})
 export const setChangeCheckbox = (id) => ({type: "setChangeCheckbox", id})
 export const clearState = () => ({type: "clearState"})
 export const toggleHideLightSensitivity = () => ({type: "toggleHideLightSensitivity"})
+export const setSearchData = (searchData) => ({type: "setSearchData", searchData})
+export const cleanSearchData = (searchData) => ({type: "cleanSearchData", searchData})

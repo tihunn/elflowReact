@@ -7,14 +7,14 @@ import {
     ADMIN_ROUTE,
     CATALOGS_ROUTE,
     All_FLOWER_ROUTE,
-    ORDER_HISTORY_ROUTE
 } from "../AppRouter/const"
 import css from "../../style/admin.module.css"
 
 
-const NavBar = ({role, isAuth, logOut}) => {
+
+const NavBar = ({role, isAuth, logOut, cleanSearchData}) => {
     return (
-        <div>
+        <div onClick={cleanSearchData}>
             <Navbar bg="dark" variant="dark">
                 <Container>
                     <NavLink to={CATALOGS_ROUTE} className={css.link_logo}>elFlower: Каталоги!</NavLink>

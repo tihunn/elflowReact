@@ -14,7 +14,7 @@ const FlowerItem = (props) => {
     }
 
     return (
-        <Row className={"mt-2"} >
+        <Row className={"mt-2"} onClick={props.cleanSearchData}>
             <div className={css.card}>
 
                 <CarouselComponent image={props.flower.image} css={css} onClick={navClick} compressed={true}/>

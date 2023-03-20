@@ -7,6 +7,7 @@ const PaginationComponent = (props) => {
     const location = useLocation()
     let idCatalog
 
+
     const path = location.pathname.split("/")
     if (path[1] === "catalog") {
         idCatalog = path[2]
@@ -20,7 +21,7 @@ const PaginationComponent = (props) => {
             <Pagination.Item
                 key={number}
                 active={number === props.activePage}
-                onClick={() => props.getFlowers(number, idCatalog, props.paramsData)}
+                onClick={() => props.getFlowers(number, idCatalog, props.searchData)}
             >
                 {number}
             </Pagination.Item>
