@@ -24,7 +24,7 @@ const FlowerItem = (props) => {
                     <h2 className={css.nameFlower}>{props.flower.nameFlower}</h2>
                     <div>Высота: {props.flower.height}</div>
                     <div>Цена: {props.flower.price}</div>
-                    <div>В наличии: {props.flower.available}</div>
+                    {props.flower.available < 0 ? < div > Нет в наличии </div> : null}
                 </div>
 
                 <Button variant="success"

@@ -11,12 +11,13 @@ import ButtonNumberFlowersContainer from "./ButtonNumberFlowers/ButtonNumberFlow
 
 const OrderItem = (props) => {
     const navigate = useNavigate()
+    const onClick = () => navigate(FLOWER_ROUTE + `/${props.order.id}`)
 
     return (
         <Row className={"mt-2"}>
             <Card className={css.main_orderItem_wrapper}>
-                <div className={css.img} onClick={() => navigate(FLOWER_ROUTE + `/${props.order.id}`)}>
-                    <CarouselComponent image={props.order.image} css={css} compressed={true}/>
+                <div className={css.img} >
+                    <CarouselComponent image={props.order.image} css={css} compressed={true} onClick={onClick}/>
                 </div>
                 <div className={css.text}>
                     <h1>
@@ -34,9 +35,9 @@ const OrderItem = (props) => {
                          <ButtonNumberFlowersContainer number={props.order.numberFlowers} id={props.order.id} />
                         <br/>
                     </div>
-                    <div>
-                        В наличии: {props.order.available} <br/>
-                    </div>
+
+                    {props.order.available < 0 ? < div > Нет в наличии </div> : null}
+
                 </div>
                 <div className={css.price}>
                     {props.order.price} Руб.

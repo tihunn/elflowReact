@@ -11,7 +11,7 @@ import {
     deleteFlower,
     delFile,
     delImg,
-    getFlower, setMessageServer,
+    getFlower, setMessageServer, updateAlternativeNames,
     updateAvailable,
     updateDescription,
     updateFlower,
@@ -68,5 +68,6 @@ export default connect(mapStateToProps, {
     updateFlower,
     createFlower,
     delImg,
-    setMessageServer
+    setMessageServer,
+    updateAlternativeNames
 })(FlowerPageContainer)

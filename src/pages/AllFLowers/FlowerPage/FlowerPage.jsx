@@ -10,7 +10,6 @@ import SendFlowerContainer from "../../../Components/SendFlower/SendFlowerContai
 import trash from "../../../ico/trash.svg"
 
 
-
 const FlowerPage = (props) => {
     let isAdmin
     props.role === "admin" ? isAdmin = true : isAdmin = false
@@ -61,7 +60,6 @@ const FlowerPage = (props) => {
     }
 
 
-
     return (
         <Container>
             {adminModal()}
@@ -98,7 +96,19 @@ const FlowerPage = (props) => {
                                              dispatch={props.updateWholesale}/>
                 </div> : null}
 
-            В наличии: <Editable value={props.flower.available} type={"number"} dispatch={props.updateAvailable}/>
+            {isAdmin
+                ? <div title={' Если написать отрицательное число то будет отображатся что товара `нет в налии" '}>
+                    В наличии:
+                    <Editable value={props.flower.available} type={"number"} dispatch={props.updateAvailable}/>
+                </div>
+                : null}
+            {!isAdmin && props.flower.available < 0 ? <div className={css.off}>Нет в наличии</div> : null}
+
+            {isAdmin || props.flower.alternativeNames
+                ? <div>Альтернативные названия:
+                    <Editable value={props.flower.alternativeNames} dispatch={props.updateAlternativeNames}/>
+                </div>
+                : null}
 
             {isAdmin || props.flower.description
                 ? <div>

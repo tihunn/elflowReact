@@ -12,6 +12,7 @@ const initialState = {
     wholesale: 100,
     available: 0,
     description: "",
+    alternativeNames: "",
     image: [],
     arrFiles: [],
     messageServer: "",
@@ -54,6 +55,11 @@ export let oneFlowerReducer = (state = initialState, action) => {
                 ...state,
                 description: action.description
             }
+        case "updateAlternativeNames":
+            return {
+                ...state,
+                alternativeNames: action.alternativeNames
+            }
         case "addFile":
             return {
                 ...state,
@@ -74,6 +80,7 @@ export let oneFlowerReducer = (state = initialState, action) => {
                 ...state,
                 messageServer: ""
             }
+
     }
     return state
 }
@@ -85,6 +92,7 @@ export const updatePrice = (price) => ({type: "updatePrice", price})
 export const updateWholesale = (wholesale) => ({type: "updateWholesale", wholesale})
 export const updateAvailable = (available) => ({type: "updateAvailable", available})
 export const updateDescription = (description) => ({type: "updateDescription", description})
+export const updateAlternativeNames = (alternativeNames) => ({type: "updateAlternativeNames", alternativeNames})
 export const addFile = (file) => ({type: "addFile", file})
 export const delFile = (index) => ({type: "delFile", index})
 export const setMessageServer = (messageServer) => ({type: "setMessageServer", messageServer})
