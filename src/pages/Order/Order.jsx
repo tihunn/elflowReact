@@ -33,7 +33,6 @@ const Order = (props) => {
                     </div>
 
                     {orders()}
-
                     <Button className="m-2" onClick={props.postOrders}>Отправить собирать</Button>
                 </Col>
             }

@@ -1,18 +1,19 @@
 import React from "react"
 import {Button, Container, Nav, Navbar} from "react-bootstrap"
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 import {
     ORDER_ROUTE,
     LOGIN_ROUTE,
     ADMIN_ROUTE,
     CATALOGS_ROUTE,
-    All_FLOWER_ROUTE,
+    All_FLOWER_ROUTE, REGISTRATION_ROUTE,
 } from "../AppRouter/const"
 import css from "../../style/admin.module.css"
 
 
-
 const NavBar = ({role, isAuth, logOut, cleanSearchData}) => {
+    const navigate = useNavigate()
+
     return (
         <div onClick={cleanSearchData}>
             <Navbar bg="dark" variant="dark">
@@ -27,8 +28,24 @@ const NavBar = ({role, isAuth, logOut, cleanSearchData}) => {
 
                     {isAuth ?
                         <Nav className="ml-auto" style={{color: "white"}}>
-                            <Button variant={"outline-light"}><NavLink to={ORDER_ROUTE}> Заказы </NavLink></Button>
-                            <Button variant={"outline-light"} onClick={logOut}>Выйти</Button>
+
+                            <Button variant={"outline-light"}>
+                                <NavLink to={ORDER_ROUTE}>
+                                    Заказы
+                                </NavLink>
+                            </Button>
+
+                            <Button className={css.profile}
+                                    variant={"outline-light"}
+                                    onClick={() => navigate(REGISTRATION_ROUTE)}
+                            >
+                                Профиль
+                            </Button>
+
+                            <Button className={css.profile} variant={"outline-light"} onClick={logOut}>
+                                Выйти
+                            </Button>
+
                         </Nav>
                         :
                         <NavLink to={LOGIN_ROUTE} className="ml-auto" style={{color: "white"}}>

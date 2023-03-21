@@ -1,0 +1,14 @@
+.error {
+    border: red 1px solid;
+    margin-top: 1rem!important;
+    color: red;
+}
+
+.norm {
+    margin-top: 1rem!important;
+}
+
+.error_b {
+    border: red 1px solid;
+    margin-bottom: 1rem!important;
+}
