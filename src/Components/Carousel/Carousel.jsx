@@ -2,11 +2,11 @@ import React from 'react';
 import {Carousel} from "react-bootstrap";
 
 const CarouselComponent = (props) => {
-    let showIsCompressed = (img) => {
-        return props.compressed
-            ? process.env.REACT_APP_API_URL + "compressed/" + img
-            : process.env.REACT_APP_API_URL + img
-    }
+    let url =
+        props.compressed
+        ? process.env.REACT_APP_API_URL + "compressed/"
+        : process.env.REACT_APP_API_URL
+
 
     const carousel = () => {
         return <Carousel>
@@ -15,7 +15,7 @@ const CarouselComponent = (props) => {
                          <img className={props.css.img}
                               alt="картинка цветка"
                               onClick={props.onClick}
-                              src={ showIsCompressed(img) }
+                              src={url + img}
                          />
                 </Carousel.Item>
             }) }
@@ -28,7 +28,7 @@ const CarouselComponent = (props) => {
                 {props.image.length !== 1
                     ? carousel()
                     : <img className={props.css.img}
-                           src={ showIsCompressed(props.image[0]) }
+                           src={url + props.image[0]}
                            alt="картинка цветка"
                            onClick={props.onClick}
                     />}

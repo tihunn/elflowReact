@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Button, Card, Container, Form} from "react-bootstrap";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {CATALOG_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "../../Components/AppRouter/const";
 import css from "../../style/auth.module.css"
 
@@ -15,6 +15,7 @@ const Auth = (props) => {
     const [isBadNumber, setIsBadNumber] = useState(false)
     const [isName, setIsName] = useState(true)
     const navigate = useNavigate()
+    const location = useLocation()
 
     const namePassPlaceHolder = () => {
         return props.isAuth ? "Новый пароль?" : "Введите пароль"
@@ -30,7 +31,7 @@ const Auth = (props) => {
             : props.isLogin ? "Войти" : "Регистрация"
     }
     const onClickButton = () => {
-        if (checkRegexpEmail() && checkRegexpNumber() && checkName()) {
+        if (props.isLogin || ( checkRegexpEmail() && checkRegexpNumber() && checkName() )) {
             props.isAuth
                 ? props.updateUser(oldEmail, email, password, name, number)
                 : props.loginOrReg(email, password, props.isLogin, undefined, name, number)
@@ -116,7 +117,7 @@ const Auth = (props) => {
                     {!props.isLogin &&
                         <Form.Control
                             className={!isBadNumber ? "mb-3" : css.error_b}
-                            placeholder={props.auth.number ? "Нет? Введите новый номер" : "Введите номер телефона"}
+                            placeholder={"Введите номер телефона"}
                             value={number}
                             onChange={e => setNumber(e.target.value)}
                             onBlur={checkRegexpNumber}
