@@ -5,6 +5,8 @@ import PaginationContainer from "../Pagination/PaginationContainer";
 import CatalogItemContainer from "../CatalogItem/CatalogItemContainer";
 import {useLocation} from "react-router-dom";
 import FlowerItemContainer from "../FlowerItem/FlowerItemContainer";
+import css from "../../style/item.module.css"
+
 
 
 const ListFlowers = (props) => {
@@ -33,19 +35,19 @@ const ListFlowers = (props) => {
 
     return (
         <Container>
-            <Row>
+            <div>
                 {location.pathname !== "/"
-                    ? <Col md={3} xl={2}>
+                    ? <div  >
                         <FilterContainer/>
-                    </Col>
+                    </div>
                     : null}
-                <Col md={9} xl={10}>
-                    <Row sm={1} md={2} lg={2} xl={3} xxl={4}>
-                        {catalogsOrFlowers()}
-                    </Row>
+                <div className={css.grid}>
+
+                    {catalogsOrFlowers()}
+
                     {location.pathname !== "/" ? <PaginationContainer/> : null}
-                </Col>
-            </Row>
+                </div>
+            </div>
         </Container>
     )
 }

@@ -21,3 +21,11 @@
 .off {
     color: red;
 }
+
+.charac {
+    color: gray;
+}
+
+.name {
+    font-size: 3em;
+}

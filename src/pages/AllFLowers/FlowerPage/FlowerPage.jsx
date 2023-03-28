@@ -10,6 +10,7 @@ import SendFlowerContainer from "../../../Components/SendFlower/SendFlowerContai
 import trash from "../../../ico/trash.svg"
 
 
+
 const FlowerPage = (props) => {
     let isAdmin
     props.role === "admin" ? isAdmin = true : isAdmin = false
@@ -77,41 +78,52 @@ const FlowerPage = (props) => {
                 </FileUpload> : null}
 
 
-            < h2 style={{fontSize: "2vmax"}}><EditableContainer value={props.flower.nameFlower}
+            < h2 className={css.name}><EditableContainer value={props.flower.nameFlower}
                                                                 dispatch={props.updateNameFlower}/></h2>
+            <span className={css.charac}> Высота: </span>
+            <EditableContainer value={props.flower.height} type={"number"} dispatch={props.updateHeight}/> cм.
 
-            Высота: <EditableContainer value={props.flower.height} type={"number"} dispatch={props.updateHeight}/> cм.
-
-            <div>Время цветения: {props.flower.bloomTime}</div>
+            <div>
+                <span className={css.charac}> Время цветения: </span>
+                {props.flower.bloomTime}
+            </div>
             {isAdmin ? <VariantsBloomTimeContainer/> : null}
 
-            <div>Световосприимчивость: {props.flower.lightSensitivity}</div>
+            <div>
+                <span className={css.charac}> Световосприимчивость: </span>
+                {props.flower.lightSensitivity}
+            </div>
             {isAdmin ? <LightSensitivityContainer/> : null}
 
-            <div> Цена: <EditableContainer value={props.flower.price} type={"number"} dispatch={props.updatePrice}/></div>
+            <div>
+                <span className={css.charac}> Цена: </span>
+                <EditableContainer value={props.flower.price} type={"number"} dispatch={props.updatePrice}/>
+            </div>
 
             {isAdmin || props.role === "wholesale" ?
-                <div>Оптовая цена: <EditableContainer value={props.flower.wholesale} type={"number"}
+                <div>
+                    <span className={css.charac}> Оптовая цена: </span>
+                    <EditableContainer value={props.flower.wholesale} type={"number"}
                                                       dispatch={props.updateWholesale}/>
                 </div> : null}
 
             {isAdmin
                 ? <div title={' Если написать отрицательное число то будет отображатся что товара `нет в налии" '}>
-                    В наличии:
+                    <span className={css.charac}>В наличии: </span>
                     <EditableContainer value={props.flower.available} type={"number"} dispatch={props.updateAvailable}/>
                 </div>
                 : null}
             {!isAdmin && props.flower.available < 0 ? <div className={css.off}>Нет в наличии</div> : null}
 
             {isAdmin || props.flower.alternativeNames
-                ? <div>Альтернативные названия:
+                ? <div> <span className={css.charac}> Альтернативные названия: </span>
                     <EditableContainer value={props.flower.alternativeNames} dispatch={props.updateAlternativeNames}/>
                 </div>
                 : null}
 
             {isAdmin || props.flower.description
                 ? <div>
-                    Описание:
+                    <span className={css.charac}> Описание: </span>
                     <EditableContainer value={props.flower.description} dispatch={props.updateDescription}/>
                 </div>
                 : null}

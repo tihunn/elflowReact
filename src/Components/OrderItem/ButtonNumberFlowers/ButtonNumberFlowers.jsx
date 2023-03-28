@@ -17,8 +17,7 @@ const ButtonNumberFlowers = (props) => {
 
     return (
         <div>
-            кол-во: <br/>
-            <input className={css.input}
+            кол-во: <input className={css.input}
                    type="number"
                    value={newNum}
                    onChange={onChangeNum}

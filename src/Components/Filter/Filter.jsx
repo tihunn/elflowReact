@@ -1,7 +1,6 @@
 import React from 'react';
 import {Button, Form} from "react-bootstrap";
 import VariantsBloomTime from "../VariantsBloomTime/VariantsBloomTime";
-import AddFlowerContainer from "../SendFlower/SendFlowerContainer";
 import LightSensitivityContainer from "../LightSensitivity/LightSensitivityContainer";
 
 

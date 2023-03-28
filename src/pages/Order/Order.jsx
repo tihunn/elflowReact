@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Col, Container, Image} from "react-bootstrap";
 import OrderItemContainer from "../../Components/OrderItem/OrderItemContainer";
-import css from "../../style/OrderItem.module.css";
+import css from "../../style/item.module.css";
 import trash from "../../ico/trash.svg"
 import {useNavigate} from "react-router-dom";
 import {ORDER_HISTORY_ROUTE} from "../../Components/AppRouter/const";

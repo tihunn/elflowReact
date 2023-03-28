@@ -35,12 +35,14 @@ const NavBar = ({role, isAuth, logOut, cleanSearchData}) => {
                                 </NavLink>
                             </Button>
 
-                            <Button className={css.profile}
-                                    variant={"outline-light"}
-                                    onClick={() => navigate(REGISTRATION_ROUTE)}
-                            >
-                                Профиль
-                            </Button>
+                            {role !== "admin" &&
+                                <Button className={css.profile}
+                                        variant={"outline-light"}
+                                        onClick={() => navigate(REGISTRATION_ROUTE)}
+                                >
+                                    Профиль
+                                </Button>
+                            }
 
                             <Button className={css.profile} variant={"outline-light"} onClick={logOut}>
                                 Выйти

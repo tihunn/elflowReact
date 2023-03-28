@@ -1,7 +1,12 @@
 import React from 'react';
-import {Card, Image, Row} from "react-bootstrap";
-import css from "../../style/OrderItem.module.css";
+import css from "../../style/OrderHistory.module.css";
 
+const InfoItem = ({label, value}) => {
+    return <div className={css.info_item}>
+        <span className={css.label}> {label}: </span>
+        <span className={css.value}> {value} </span>
+    </div>
+}
 
 
 const OrderHistoryItem = ({order, role, showCreated}) => {
@@ -34,7 +39,7 @@ const OrderHistoryItem = ({order, role, showCreated}) => {
                 Имя: {order.user.name} <br/>
                 Номер: {order.user.number} <br/>
                 Роль: {order.user.role} <br/>
-                <span hidden={showCreated}> Создан: {timeRu( order.user.createdAt )} </span>
+                <span hidden={showCreated}> Создан: {timeRu(order.user.createdAt)} </span>
             </div>
         }
     }
@@ -52,33 +57,25 @@ const OrderHistoryItem = ({order, role, showCreated}) => {
     }
 
     return (
-        <Row className={"mt-2"}>
-            <Card className={css.main_orderItem_wrapper}>
 
-                {userStat()}
+            <div className={css.container}>
+                <div className={css.info}>
 
-                <div className={css.text}>
-                    <h1>
-                        Заказ номер № {order.id}
-                    </h1>
+                    <InfoItem label="Заказ №" value={order.id}/>
 
-                    <div>
-                        Статус заказа: {statusRu()}. <br/>
-                        Время обновление статуса: {timeRu(order.updatedAt)}.
-                    </div>
+                    {/*<InfoItem label="email" value={order.user.email}/>*/}
+                    {/*<InfoItem label="Имя" value={order.user.email}/>*/}
+                    {/*<InfoItem label="Номер" value={order.user.number}/>*/}
+                    {/*<InfoItem label="Роль" value={order.user.role}/>*/}
+                    {/*<InfoItem label="Создан" value={order.user.createdAt}/>*/}
+                    {/*<InfoItem label="Статус заказа" value={statusRu()}/>*/}
+                    {/*<InfoItem label="Время обновление статуса" value={timeRu(order.updatedAt)}/>*/}
+                    <InfoItem label="Кол-во растений" value={order.sumFlowers}/>
+                    <InfoItem label="Общяя сумма" value={order.sumPrice}/>
+
                 </div>
-                <div className={css.numbers}>
-                    <div>
-                        Кол-во растений: <br/>
-                        {order.sumFlowers} <br/>
-                    </div>
-                </div>
-                <div className={css.price}>
-                    Общяя сумма заказа: <br/>
-                    {order.sumPrice} Руб. <br/>
-                </div>
-            </Card>
-        </Row>
+            </div>
+
     );
 };
 
