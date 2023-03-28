@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, Container, Row} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import FilterContainer from "../Filter/FilterContainer";
 import PaginationContainer from "../Pagination/PaginationContainer";
 import CatalogItemContainer from "../CatalogItem/CatalogItemContainer";
