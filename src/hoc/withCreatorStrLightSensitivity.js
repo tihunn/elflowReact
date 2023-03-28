@@ -10,7 +10,7 @@ export default function withCreatorStrLightSensitivity(Component) {
                 strLightSensitivity = "Солнце"
             }
             if (isSunAndShadow) {
-                strLightSensitivity = strLightSensitivity + "или полутень"
+                strLightSensitivity = strLightSensitivity + " или полутень"
             }
             return strLightSensitivity
         }
